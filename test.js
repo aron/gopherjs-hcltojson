@@ -3,8 +3,24 @@ const assert = require('assert');
 const { hcltojson } = require('./hcltojson');
 
 const tf = fs.readFileSync('./example.tf', 'utf-8');
-const expected = fs.readFileSync('./fixture.json', 'utf-8');
+const expected = {
+  resource: {
+    aws_security_group: {
+      allow_ssh: {
+        description: 'Allow SSH inbound from anywhere',
+        ingress: {
+          cidr_blocks: ["0.0.0.0/0"],
+          from_port: 22,
+          protocol: 'tcp',
+          to_port: 22
+        },
+        name: 'allow_ssh',
+        vpc_id: 'arn'
+      }
+    }
+  }
+};
 
-assert.equal(hcltojson(tf), expected, 'Parsed Terraform does not match expected');
+assert.deepEqual(hcltojson(tf), expected, 'Parsed Terraform does not match expected');
 
 console.log("OK");

@@ -25,13 +25,11 @@ Usage
 -----
 
 The module exposes a single function `hcltojson()` this takes a string
-of HCL2 and returns a string of JSON, this can then be converted into
-JavaScript using the `JSON.parse()` function:
+of HCL2 and returns a JavaScript object:
 
     const { hcltojson } = require('./hcltojson');
     const tf = fs.readFileSync('../path/to/terraform.tf', 'utf-8');
-    const json = hcltojson(tf);
-    const data = JSON.parse(json);
+    const data = hcltojson(tf);
 
 Test
 ----
@@ -46,8 +44,7 @@ content of fixture.json.
 TODO
 ----
 
-1. Update `hcltojson()` to return a JavaScript object.
-2. Support the latest 0.3.2 version of hcl2json.
+1. Support the latest 0.3.2 version of hcl2json.
 
 [1]: https://github.com/gopherjs/gopherjs
 [2]: https://github.com/tmccombs/hcl2json/

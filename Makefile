@@ -1,7 +1,7 @@
 vendor:
 	go mod vendor
 
-hcltojson.js hcltojson.js.map: vendor
+hcltojson.js hcltojson.js.map: hcltojson.go vendor
 	GOOS=linux $$GOPATH/bin/gopherjs build -m hcltojson.go
 
 .PHONY: build
