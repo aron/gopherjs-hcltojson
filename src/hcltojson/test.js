@@ -1,8 +1,9 @@
 const fs = require('fs');
 const assert = require('assert');
-const { hcltojson } = require('./hcltojson');
+const path = require('path');
+const { hcltojson } = require('./dist/hcltojson');
 
-const tf = fs.readFileSync('./example.tf', 'utf-8');
+const tf = fs.readFileSync(path.join(__dirname, 'example.tf'), 'utf-8');
 const expected = {
   resource: {
     aws_security_group: {

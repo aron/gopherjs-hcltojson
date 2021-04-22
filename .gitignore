@@ -1,3 +1,6 @@
-hcltojson.js
-hcltojson.js.map
-vendor
+bin
+pkg
+src/*
+!src/hcltojson
+src/hcltojson/vendor
+src/hcltojson/dist
